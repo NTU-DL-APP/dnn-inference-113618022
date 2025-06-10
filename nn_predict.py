@@ -18,7 +18,6 @@ def softmax(x):
     else:
         raise ValueError("Input to softmax must be 1D or 2D numpy array.")
 
-
 # === Flatten ===
 def flatten(x):
     return x.reshape(x.shape[0], -1)
@@ -27,7 +26,7 @@ def flatten(x):
 def dense(x, W, b):
     return x @ W + b
 
-# === 推論主流程（支援 Flatten, Dense, relu, softmax）===
+# === Forward pass using architecture + weights ===
 def nn_forward_h5(model_arch, weights, data):
     x = data
     for layer in model_arch:
@@ -47,6 +46,6 @@ def nn_forward_h5(model_arch, weights, data):
                 x = softmax(x)
     return x
 
-# === 封裝入口點 ===
+# === Unified inference entry point ===
 def nn_inference(model_arch, weights, data):
     return nn_forward_h5(model_arch, weights, data)
