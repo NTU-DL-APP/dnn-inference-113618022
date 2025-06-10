@@ -6,14 +6,17 @@ def relu(x):
     return np.maximum(0, x)
 
 def softmax(x):
-    if x.ndim == 1:
-        x = x - np.max(x)           # 減最大值以防 overflow
+    if isinstance(x, np.ndarray) and x.ndim == 1:
+        x = x - np.max(x)
         exps = np.exp(x)
         return exps / np.sum(exps)
-    else:
+    elif isinstance(x, np.ndarray) and x.ndim == 2:
         x = x - np.max(x, axis=1, keepdims=True)
         exps = np.exp(x)
         return exps / np.sum(exps, axis=1, keepdims=True)
+    else:
+        raise ValueError("Input to softmax must be 1D or 2D NumPy array.")
+
 
 # === Flatten ===
 def flatten(x):
