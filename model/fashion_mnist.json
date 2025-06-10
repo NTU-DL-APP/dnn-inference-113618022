@@ -1,44 +1,56 @@
 [
     {
-        "name": "flatten",
+        "name": "flatten_2",
         "type": "Flatten",
         "config": {},
         "weights": []
     },
     {
-        "name": "dense",
+        "name": "dense_7",
+        "type": "Dense",
+        "config": {
+            "units": 512,
+            "activation": "relu"
+        },
+        "weights": [
+            "dense_7_kernel",
+            "dense_7_bias"
+        ]
+    },
+    {
+        "name": "dense_8",
         "type": "Dense",
         "config": {
             "units": 256,
             "activation": "relu"
         },
         "weights": [
-            "dense_kernel",
-            "dense_bias"
+            "dense_8_kernel",
+            "dense_8_bias"
         ]
     },
     {
-        "name": "dense_1",
+        "name": "dense_9",
         "type": "Dense",
         "config": {
             "units": 128,
             "activation": "relu"
         },
         "weights": [
-            "dense_1_kernel",
-            "dense_1_bias"
+            "dense_9_kernel",
+            "dense_9_bias"
         ]
     },
     {
-        "name": "dense_2",
+        "name": "dense_10",
         "type": "Dense",
         "config": {
             "units": 10,
             "activation": "softmax"
         },
         "weights": [
-            "dense_2_kernel",
-            "dense_2_bias"
+            "dense_10_kernel",
+            "dense_10_bias"
         ]
     }
 ]

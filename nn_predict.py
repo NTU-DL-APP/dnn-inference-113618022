@@ -6,7 +6,8 @@ def relu(x):
     return np.maximum(0, x)
 
 def softmax(x):
-    exps = np.exp(x - np.max(x, axis=1, keepdims=True))
+    x = np.atleast_2d(x)  # 保證至少是 2D，兼容單筆 or 批次輸入
+    exps = np.exp(x - np.max(x, axis=1, keepdims=True))  # 數值穩定
     return exps / np.sum(exps, axis=1, keepdims=True)
 
 # === Flatten ===
@@ -17,12 +18,10 @@ def flatten(x):
 def dense(x, W, b):
     return x @ W + b
 
-# Infer TensorFlow h5 model using numpy
-# Support only Dense, Flatten, relu, softmax now
+# === 推論主流程（支援 Flatten, Dense, relu, softmax）===
 def nn_forward_h5(model_arch, weights, data):
     x = data
     for layer in model_arch:
-        lname = layer['name']
         ltype = layer['type']
         cfg = layer['config']
         wnames = layer['weights']
@@ -37,9 +36,8 @@ def nn_forward_h5(model_arch, weights, data):
                 x = relu(x)
             elif cfg.get("activation") == "softmax":
                 x = softmax(x)
-
     return x
 
-# You are free to replace nn_forward_h5() with your own implementation 
+# === 封裝入口點 ===
 def nn_inference(model_arch, weights, data):
     return nn_forward_h5(model_arch, weights, data)
