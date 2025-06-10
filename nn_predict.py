@@ -7,7 +7,7 @@ def relu(x):
 
 def softmax(x):
     if x.ndim == 1:
-        x = x - np.max(x)
+        x = x - np.max(x)           # 減最大值以防 overflow
         exps = np.exp(x)
         return exps / np.sum(exps)
     else:
