@@ -1,56 +1,56 @@
 [
     {
-        "name": "flatten_2",
+        "name": "flatten",
         "type": "Flatten",
         "config": {},
         "weights": []
     },
     {
-        "name": "dense_7",
+        "name": "dense",
         "type": "Dense",
         "config": {
             "units": 512,
             "activation": "relu"
         },
         "weights": [
-            "dense_7_kernel",
-            "dense_7_bias"
+            "dense_kernel",
+            "dense_bias"
         ]
     },
     {
-        "name": "dense_8",
+        "name": "dense_1",
         "type": "Dense",
         "config": {
             "units": 256,
             "activation": "relu"
         },
         "weights": [
-            "dense_8_kernel",
-            "dense_8_bias"
+            "dense_1_kernel",
+            "dense_1_bias"
         ]
     },
     {
-        "name": "dense_9",
+        "name": "dense_2",
         "type": "Dense",
         "config": {
             "units": 128,
             "activation": "relu"
         },
         "weights": [
-            "dense_9_kernel",
-            "dense_9_bias"
+            "dense_2_kernel",
+            "dense_2_bias"
         ]
     },
     {
-        "name": "dense_10",
+        "name": "dense_3",
         "type": "Dense",
         "config": {
             "units": 10,
             "activation": "softmax"
         },
         "weights": [
-            "dense_10_kernel",
-            "dense_10_bias"
+            "dense_3_kernel",
+            "dense_3_bias"
         ]
     }
 ]

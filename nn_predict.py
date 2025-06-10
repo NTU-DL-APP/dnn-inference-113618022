@@ -6,9 +6,14 @@ def relu(x):
     return np.maximum(0, x)
 
 def softmax(x):
-    x = np.atleast_2d(x)  # 保證至少是 2D，兼容單筆 or 批次輸入
-    exps = np.exp(x - np.max(x, axis=1, keepdims=True))  # 數值穩定
-    return exps / np.sum(exps, axis=1, keepdims=True)
+    if x.ndim == 1:
+        x = x - np.max(x)
+        exps = np.exp(x)
+        return exps / np.sum(exps)
+    else:
+        x = x - np.max(x, axis=1, keepdims=True)
+        exps = np.exp(x)
+        return exps / np.sum(exps, axis=1, keepdims=True)
 
 # === Flatten ===
 def flatten(x):

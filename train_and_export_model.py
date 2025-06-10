@@ -29,7 +29,7 @@ model.compile(
 )
 
 # === 增加訓練輪數以穩定泛化效果 ===
-model.fit(x_train, y_train, epochs=20, batch_size=128, validation_split=0.1)
+model.fit(x_train, y_train, epochs=30, batch_size=128, validation_split=0.1)
 
 test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
 print(f"✅ Test Accuracy: {test_acc:.4f}")
